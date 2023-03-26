@@ -730,7 +730,7 @@ body._pc .menu__sub-list > li:hover .menu__sub-list--2 {
   height: 100vh;
 }
 .page__section_1 {
-  background: url("../images/alpaca.jpg") top left/cover no-repeat;
+  background: url("../images/alpaca.jpg") top left 20%/cover no-repeat;
 }
 .page__section_2 {
   background-color: #964a3b;
