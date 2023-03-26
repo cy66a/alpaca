@@ -727,7 +727,7 @@ body._pc .menu__sub-list > li:hover .menu__sub-list--2 {
   padding: 30px;
   max-width: 1400px;
   margin: 0 auto;
-  height: 100vh;
+  height: calc(100vh - 80px);
 }
 .page__section_1 {
   background: url("../images/alpaca.jpg") top left 20%/cover no-repeat;
