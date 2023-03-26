@@ -1,0 +1,327 @@
+.menu {
+  &__list > li {
+    position: relative;
+  }
+
+  &__list li {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    display: none;
+  }
+
+  &__link {
+    color: $white;
+    font-size: 18px;
+  }
+
+  &__sub-list li {
+    background-color: $secondary;
+    border-bottom: 1px solid rgba($color: #fff, $alpha: 0.1);
+    display: flex;
+    position: relative;
+  }
+
+  &__sub-list li:last-child {
+    border-bottom: none;
+  }
+
+  &__sub-link {
+    color: $white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__sub-list {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease 0s;
+  }
+
+  &__link,
+  &__sub-link {
+    flex: 1 1 auto;
+  }
+
+  &__arrow {
+    transition: transform 0.3s ease 0s;
+  }
+
+  &__arrow--1 {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 6px solid $orange;
+  }
+
+  &__arrow--2 {
+    border-right: 6px solid $orange;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+  }
+
+  &__list > li._active .menu__sub-list--1,
+  &__sub-list > li._active .menu__sub-list--2 {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0px, 0px);
+    pointer-events: all;
+  }
+
+  &__list > li._active .menu__arrow--1,
+  &__sub-list > li._active .menu__arrow--2 {
+    transform: rotate(-180deg);
+  }
+}
+
+/* Адаптив */
+@media (min-width: 991px) {
+  .menu {
+    &__list {
+      display: flex;
+      align-items: center;
+    }
+
+    &__list > li {
+      margin: 0 0 0 60px;
+      padding: 25px 0;
+    }
+
+    &__list li:hover .menu__arrow--1 {
+      transform: rotate(180deg);
+    }
+
+    &__arrow {
+      width: 0;
+      height: 0;
+      margin: 0 0 0 10px;
+    }
+
+    &__sub-list {
+      position: absolute;
+    }
+
+    &__sub-list--1 {
+      top: 100%;
+      left: 0;
+      max-width: 320px;
+      border-radius: 0 0 8px 8px;
+    }
+
+    &__sub-list--2 {
+      bottom: 0;
+      left: 320px;
+      border-left: 22px solid transparent;
+    }
+
+    &__sub-list--1 {
+      transform: translate(0px, 10px);
+    }
+
+    &__sub-list--2 {
+      transform: translate(10px, 0px);
+    }
+
+    &__sub-list--1::before {
+      position: absolute;
+      content: "";
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-bottom: 14px solid $secondary;
+      top: -14px;
+      left: 47px;
+    }
+
+    &__sub-list--2::before {
+      position: absolute;
+      content: "";
+      border-top: 14px solid transparent;
+      border-right: 14px solid $secondary;
+      border-bottom: 14px solid transparent;
+      left: -14px;
+      bottom: 8px;
+    }
+
+    &__sub-list li {
+      padding: 8px 18px 8px 18px;
+    }
+
+    &__sub-list li:hover {
+      background-color: $primary;
+    }
+
+    &__sub-list li:hover .menu__arrow--2 {
+      transform: rotate(180deg);
+    }
+
+    &__sub-list li:last-child {
+      border-radius: 0 0 8px 8px;
+    }
+
+    &__sub-list--2 li:first-child {
+      border-radius: 8px 8px 0 0;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .menu {
+    order: 1;
+
+    &__icon {
+      z-index: 5;
+      display: block;
+      position: relative;
+      width: 30px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    &__icon span,
+    &__icon::before,
+    &__icon::after {
+      left: 0;
+      position: absolute;
+      height: 10%;
+      width: 100%;
+      transition: all 0.3s ease 0s;
+      background-color: $white;
+    }
+
+    &__icon::before,
+    &__icon::after {
+      content: "";
+    }
+
+    &__icon::before {
+      top: 0;
+    }
+
+    &__icon::after {
+      bottom: 0;
+    }
+
+    &__icon span {
+      top: 50%;
+      transform: scale(1) translate(0px, -50%);
+    }
+
+    &__icon._active span {
+      transform: scale(0) translate(0px, -50%);
+    }
+
+    &__icon._active::before {
+      top: 50%;
+      transform: rotate(-45deg) translate(0px, -50%);
+    }
+
+    &__icon._active::after {
+      bottom: 50%;
+      transform: rotate(45deg) translate(0px, 50%);
+    }
+
+    &__body {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 376px;
+      height: 100%;
+      right: -100%;
+      background-color: $primary;
+      padding: 80px 0 0 0;
+      transition: right 0.3s ease 0s;
+      overflow: auto;
+    }
+
+    &__body._active {
+      right: 0;
+    }
+
+    &__body::after {
+      content: "";
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      height: 80px;
+      background-color: $primary;
+      z-index: 2;
+    }
+
+    &__list a {
+      display: flex;
+      align-items: center;
+      height: 64px;
+      padding: 0 0 0 20px;
+    }
+
+    &__list li {
+      flex-wrap: wrap;
+      background-color: $secondary;
+      border-bottom: 1px solid $primary;
+    }
+
+    &__list li._active {
+      background-color: $primary;
+    }
+
+    &__list > li:last-child {
+      margin-bottom: 0;
+    }
+
+    &__list > li._active .menu__sub-list--1 {
+      display: block;
+    }
+
+    &__sub-list > li._active .menu__sub-list--2 {
+      display: block;
+    }
+
+    &__link {
+      font-size: 18px;
+    }
+
+    &__arrow {
+      margin: 0 20px 0 0;
+    }
+
+    &__arrow--2 {
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 6px solid $orange;
+    }
+
+    &__sub-list {
+      position: relative;
+      flex: 1 1 100%;
+      display: none;
+    }
+
+    &__sub-link {
+      font-size: 16px;
+    }
+  }
+}
+
+/* PC & Touch */
+body._pc .menu__link:hover {
+  color: $redorange;
+}
+
+body._pc .menu__list li:hover .menu__sub-list--1 {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0px, 0px);
+  pointer-events: all;
+}
+
+body._pc .menu__sub-list > li:hover .menu__sub-list--2 {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0px, 0px);
+  pointer-events: all;
+}

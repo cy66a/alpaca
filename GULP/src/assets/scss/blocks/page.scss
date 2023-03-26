@@ -1,0 +1,44 @@
+.page {
+  padding: 80px 0 30px 0;
+
+  &__section {
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: calc(100vh - 80px);
+  }
+
+  &__section_1 {
+    background: url("../images/alpaca.jpg") top left 20% / cover no-repeat;
+  }
+  
+  &__section_2 {
+    background-color: #964a3b;
+  }
+  &__section_3 {
+    background-color: #678b42;
+  }
+
+  &__section_4 {
+    background-color: #9c5e44;
+  }
+
+  &__title {
+    font-size: 40px;
+    margin: 0 0 20px 0;
+  }
+
+  &__sub-title {
+    font-size: 30px;
+    margin: 0 0 20px 0;
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 150%;
+
+    p {
+      margin: 0 0 20px 0;
+    }
+  }
+}

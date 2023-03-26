@@ -1,0 +1,27 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: $primary;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    padding: 0 22px;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 80px;
+  }
+
+  &__logo {
+    border-radius: 50%;
+    background: url("../images/logo.svg") center center / contain no-repeat;
+    position: relative;
+    z-index: 5;
+    width: 46px;
+    height: 46px;
+  }
+}

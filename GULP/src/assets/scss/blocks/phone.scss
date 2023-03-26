@@ -1,0 +1,20 @@
+.phone {
+  z-index: 5;
+  &__logo {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__number {
+    color: $white;
+    margin: 0 0 0 10px;
+  }
+}
+
+@include breakpoint($mobile-bp) {
+  .phone {
+    &__number {
+      display: none;
+    }
+  }
+}
